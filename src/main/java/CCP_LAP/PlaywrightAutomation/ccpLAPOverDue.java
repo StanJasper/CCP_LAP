@@ -142,7 +142,7 @@ public class ccpLAPOverDue {
         Match match = SikuliHelper.find(SikuliElements.UTR_NO, 5);
         if (match != null) {
             SikuliHelper.click(match);
-            SikuliHelper.pasteWithoutTarget("TestAuto06");
+            SikuliHelper.pasteWithoutTarget("TestAuto07");
             Thread.sleep(1500);
             SikuliHelper.clickOffset(match, 0, 35);
         }
