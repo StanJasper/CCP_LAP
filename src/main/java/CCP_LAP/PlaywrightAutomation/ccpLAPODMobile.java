@@ -144,16 +144,16 @@ public class ccpLAPODMobile {
         Match match = SikuliHelperMobile.find(SikuliElementsMobile.UTR_NO, 5);
         if (match != null) {
             SikuliHelperMobile.click(match);
-            SikuliHelperMobile.pasteWithoutTarget("TestAuto08");
+            SikuliHelperMobile.pasteWithoutTarget("TestAuto09");
             Thread.sleep(1500);
             SikuliHelperMobile.clickOffset(match, 0, 35);
         }
-        SikuliHelperMobile.scrollDown(2);
+        SikuliHelperMobile.scrollDown(1);
         uploadAttachment();
         SikuliHelperMobile.scrollDown(4);
         SikuliHelperMobile.paste(SikuliElementsMobile.ADVANCE_EMI, "1");
         SikuliHelperMobile.scrollDown(3);
-
+ 
 
         finishReceiptFlow();
     }
@@ -170,10 +170,10 @@ public class ccpLAPODMobile {
 
     public static void finishReceiptFlow() throws Exception {
         SikuliHelperMobile.click(SikuliElementsMobile.PREVIEW);
-        Thread.sleep(1500);
+        Thread.sleep(3000);
         SikuliHelperMobile.click(SikuliElementsMobile.SAVE);
         SikuliHelperMobile.scrollDown(3);
-        Thread.sleep(1500);
+        Thread.sleep(3000);
         SikuliHelperMobile.click(SikuliElementsMobile.RECEIPT);
         SikuliHelperMobile.scrollDown(10);
         SikuliHelperMobile.click(SikuliElementsMobile.RECEIPT_CLOSE);
