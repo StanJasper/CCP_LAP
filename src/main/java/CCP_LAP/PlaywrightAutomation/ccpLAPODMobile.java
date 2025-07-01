@@ -4,6 +4,7 @@ import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.Geolocation;
 import framework.SikuliElementsMobile;
 import framework.SikuliHelperMobile;
+import framework.ConfigReader;
 import framework.RandomNumberUtil;
 import org.sikuli.script.Match;
 
@@ -29,16 +30,17 @@ public class ccpLAPODMobile {
             context.clearCookies();
 
             Page page = context.newPage();
-            page.navigate("https://ccppreprod02.chola.murugappa.com");
+            page.navigate(ConfigReader.get("url"));
 
             page.locator("xpath = //h3[contains(text(),'Loan Against Property')]").click();
-            page.locator("xpath=//input[@name='username']").fill("jasperrajkumar");
-            page.locator("xpath=//input[@name='password']").fill("Jas$098098");
+            page.locator("xpath=//input[@name='username']").fill(ConfigReader.get("username"));
+            page.locator("xpath=//input[@name='password']").fill(ConfigReader.get("password"));
             page.click("xpath=(//input[@id='kc-login'])");
 
             Thread.sleep(5000);
 
-            SikuliHelperMobile.paste(SikuliElementsMobile.SEARCHBAR, "HE01WFC00000103029");
+            SikuliHelperMobile.paste(SikuliElementsMobile.SEARCHBAR, ConfigReader.get("agreement_no"));
+
             page.keyboard().press("Enter");
             Thread.sleep(1000);
 
@@ -86,7 +88,7 @@ public class ccpLAPODMobile {
 
     public static void fillCashReceiptFlow() throws Exception {
         startCommonReceiptFlow("Cash");
-        SikuliHelperMobile.paste(SikuliElementsMobile.MOBILE_NO, "9566090276");
+        SikuliHelperMobile.paste(SikuliElementsMobile.MOBILE_NO, ConfigReader.get("mobile_no"));
         Thread.sleep(1000);
         SikuliHelperMobile.paste(SikuliElementsMobile.AMOUNT, "1");
         SikuliHelperMobile.scrollDown(5);
@@ -144,7 +146,7 @@ public class ccpLAPODMobile {
         Match match = SikuliHelperMobile.find(SikuliElementsMobile.UTR_NO, 5);
         if (match != null) {
             SikuliHelperMobile.click(match);
-            SikuliHelperMobile.pasteWithoutTarget("TestAuto09");
+            SikuliHelperMobile.pasteWithoutTarget(ConfigReader.get("utr_no"));
             Thread.sleep(1500);
             SikuliHelperMobile.clickOffset(match, 0, 35);
         }
@@ -173,7 +175,7 @@ public class ccpLAPODMobile {
         Thread.sleep(3000);
         SikuliHelperMobile.click(SikuliElementsMobile.SAVE);
         SikuliHelperMobile.scrollDown(3);
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         SikuliHelperMobile.click(SikuliElementsMobile.RECEIPT);
         SikuliHelperMobile.scrollDown(10);
         SikuliHelperMobile.click(SikuliElementsMobile.RECEIPT_CLOSE);

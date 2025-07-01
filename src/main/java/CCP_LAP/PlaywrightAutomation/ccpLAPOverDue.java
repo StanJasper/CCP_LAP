@@ -4,6 +4,7 @@ import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.Geolocation;
 import framework.SikuliElements;
 import framework.SikuliHelper;
+import framework.ConfigReader;
 import framework.RandomNumberUtil;
 import org.sikuli.script.*;
 
@@ -29,18 +30,19 @@ public class ccpLAPOverDue {
             context.clearCookies();
 
             Page page = context.newPage();
-            page.navigate("https://ccppreprod02.chola.murugappa.com");
+            page.navigate(ConfigReader.get("url"));
 
             page.locator("xpath = //h3[contains(text(),'Loan Against Property')]").click();
-            page.locator("xpath=//input[@name='username']").fill("jasperrajkumar");
-            page.locator("xpath=//input[@name='password']").fill("Jas$098098");
+            page.locator("xpath=//input[@name='username']").fill(ConfigReader.get("username"));
+            page.locator("xpath=//input[@name='password']").fill(ConfigReader.get("password"));
             page.click("xpath=(//input[@id='kc-login'])");
 
             Thread.sleep(5000);
 
             SikuliHelper.click(SikuliElements.AGREEMENTS);
             Thread.sleep(2000);
-            SikuliHelper.paste(SikuliElements.SEARCHBAR, "HE01MAM00000103840");
+            SikuliHelper.paste(SikuliElements.SEARCHBAR, ConfigReader.get("agreement_no"));
+
             page.keyboard().press("Enter");
             Thread.sleep(1000);
             SikuliHelper.click(SikuliElements.AGREEMENT_NO);
@@ -74,7 +76,7 @@ public class ccpLAPOverDue {
 
     public static void fillCashReceiptFlow() throws Exception {
         startCommonReceiptFlow("Cash");
-        SikuliHelper.paste(SikuliElements.MOBILE_NO, "9566090276");
+        SikuliHelper.paste(SikuliElements.MOBILE_NO, ConfigReader.get("mobile_no"));
         Thread.sleep(1000);
         SikuliHelper.paste(SikuliElements.AMOUNT, "1");
         SikuliHelper.scrollDown(1);
@@ -142,7 +144,7 @@ public class ccpLAPOverDue {
         Match match = SikuliHelper.find(SikuliElements.UTR_NO, 5);
         if (match != null) {
             SikuliHelper.click(match);
-            SikuliHelper.pasteWithoutTarget("TestAuto07");
+            SikuliHelper.pasteWithoutTarget(ConfigReader.get("utr_no"));
             Thread.sleep(1500);
             SikuliHelper.clickOffset(match, 0, 35);
         }
