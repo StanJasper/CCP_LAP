@@ -115,7 +115,7 @@ public class sikuliXOverdueCheque {
 					"D:\\1_Jasper\\Automation\\workspace\\PlaywrightAutomation\\src\\main\\java\\resources\\images\\Continue.png");
 			screen.click(Continue);
 
-			// CLICK CHEQUQ
+			// CLICK CHEQUE
 
 			Pattern Chequemode = new Pattern(
 					"D:\\1_Jasper\\Automation\\workspace\\PlaywrightAutomation\\src\\main\\java\\resources\\images\\ChequeMode.png");

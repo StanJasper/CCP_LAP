@@ -44,4 +44,9 @@ public class SikuliHelper {
         Location offsetLocation = match.getTarget().offset(offsetX, offsetY);
         screen.click(offsetLocation);
     }
+
+	public static void pressArrowDown(int i) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -34,4 +34,8 @@ public class SikuliElements {
 
     public static final Pattern RECEIPT = new Pattern(BASE_PATH + "Receipt.png");
     public static final Pattern RECEIPT_CLOSE = new Pattern(BASE_PATH + "Close.png");
+
+	public static Pattern CONTACT_RECORDING;
+
+	public static Pattern SURVEY_TYPE;
 }
