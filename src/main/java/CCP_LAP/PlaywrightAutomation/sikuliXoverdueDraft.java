@@ -17,7 +17,7 @@ import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import com.microsoft.playwright.options.Geolocation;
 
-import test.scripts.test.scriptsplaywright.instrumentNoGenerator;
+import framework.instrumentNoGenerator;
 
 public class sikuliXoverdueDraft {
 
