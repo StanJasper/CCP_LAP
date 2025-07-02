@@ -10,7 +10,7 @@ public class ConfigReader {
     static {
         try {
             props = new Properties();
-            FileInputStream fis = new FileInputStream("src/main/resources/config.properties");
+            FileInputStream fis = new FileInputStream("D:\\1_Jasper\\Automation\\workspace\\PlaywrightAutomation\\src\\main\\java\\resources\\config.properties");
             props.load(fis);
         } catch (IOException e) {
             e.printStackTrace();
