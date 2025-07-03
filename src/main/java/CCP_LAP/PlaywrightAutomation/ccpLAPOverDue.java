@@ -4,6 +4,7 @@ import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.Geolocation;
 import framework.SikuliElements;
 import framework.SikuliHelper;
+import framework.ccpLAPBatchChallan;
 import framework.ConfigReader;
 import framework.RandomNumberUtil;
 import org.sikuli.script.*;
@@ -47,9 +48,25 @@ public class ccpLAPOverDue {
             Thread.sleep(1000);
             SikuliHelper.click(SikuliElements.AGREEMENT_NO);
 
+         // Start Cash Flow
             fillCashReceiptFlow();
+            Thread.sleep(10000);
+            ccpLAPBatchChallan.runCashBatchAndChallan(page);
+
+            // Start Cheque Flow
+            reselectAgreement(page);
             fillChequeReceiptFlow(page);
+            Thread.sleep(10000);
+            ccpLAPBatchChallan.runChequeBatchAndChallan(page);
+
+            // Start Draft Flow
+            reselectAgreement(page);
             fillDraftReceiptFlow(page);
+            Thread.sleep(10000);
+            ccpLAPBatchChallan.runDraftBatchAndChallan(page);
+
+            // Start RTGS Flow (no batch and challan)
+            reselectAgreement(page);
             fillRTGSReceiptFlow(page);
 
         } catch (Exception e) {
@@ -89,7 +106,7 @@ public class ccpLAPOverDue {
 
     public static void fillChequeReceiptFlow(Page page) throws Exception {
         startCommonReceiptFlow("Cheque");
-        SikuliHelper.paste(SikuliElements.MOBILE_NO, "9566090276");
+        SikuliHelper.paste(SikuliElements.MOBILE_NO, ConfigReader.get("mobile_no"));
         Thread.sleep(1000);
         SikuliHelper.paste(SikuliElements.AMOUNT, "1");
         SikuliHelper.scrollDown(1);
@@ -106,14 +123,14 @@ public class ccpLAPOverDue {
         System.out.println("Generated Cheque Instrument No: " + instNo);
         SikuliHelper.paste(SikuliElements.INSTRUMENT_NO, instNo);
 
-        uploadAttachment();
+        uploadAttachment(); Thread.sleep(2000);
         finishReceiptFlow();
     }
 
     public static void fillDraftReceiptFlow(Page page) throws Exception {
         startCommonReceiptFlow("Draft");
         
-        SikuliHelper.paste(SikuliElements.MOBILE_NO, "9566090276");
+        SikuliHelper.paste(SikuliElements.MOBILE_NO, ConfigReader.get("mobile_no"));
         Thread.sleep(1000);
         SikuliHelper.paste(SikuliElements.AMOUNT, "1");
         SikuliHelper.scrollDown(1);
@@ -129,14 +146,14 @@ public class ccpLAPOverDue {
         System.out.println("Generated Draft Instrument No: " + instNo);
         SikuliHelper.paste(SikuliElements.INSTRUMENT_NO, instNo);
 
-        uploadAttachment();
+        uploadAttachment(); Thread.sleep(2000);
         finishReceiptFlow();
     }
 
     public static void fillRTGSReceiptFlow(Page page) throws Exception {
         startCommonReceiptFlow("RTGS");
 
-        SikuliHelper.paste(SikuliElements.MOBILE_NO, "9566090276");
+        SikuliHelper.paste(SikuliElements.MOBILE_NO, ConfigReader.get("mobile_no"));
         Thread.sleep(1000);
         SikuliHelper.scrollDown(1);
         Thread.sleep(1000);
@@ -153,9 +170,19 @@ public class ccpLAPOverDue {
         SikuliHelper.paste(SikuliElements.ADVANCE_EMI, "1");
         SikuliHelper.scrollDown(3);
 
-        uploadAttachment();
+        uploadAttachment(); Thread.sleep(2000);
         finishReceiptFlow();
     }
+    
+    public static void reselectAgreement(Page page) throws Exception {
+        SikuliHelper.click(SikuliElements.AGREEMENTS);
+        Thread.sleep(2000);
+        SikuliHelper.paste(SikuliElements.SEARCHBAR, ConfigReader.get("agreement_no"));
+        page.keyboard().press("Enter");
+        Thread.sleep(1500);
+        SikuliHelper.click(SikuliElements.AGREEMENT_NO);
+    }
+
 
     public static void uploadAttachment() throws Exception {
         SikuliHelper.click(SikuliElements.UPLOAD);
