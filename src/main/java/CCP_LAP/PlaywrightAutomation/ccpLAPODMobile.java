@@ -191,7 +191,7 @@ public class ccpLAPODMobile {
         SikuliHelper.paste(SikuliElementsMobile.SEARCHBAR, ConfigReader.get("agreement_no"));
         page.keyboard().press("Enter");
         Thread.sleep(1500);
-        SikuliHelper.click(SikuliElementsMobile.AGREEMENT_NO);
+        //SikuliHelper.click(SikuliElementsMobile.AGREEMENT_NO);
     }
 
     public static void uploadAttachment() throws Exception {
