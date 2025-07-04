@@ -8,6 +8,8 @@ public class SikuliElementsMobile {
 
     public static final Pattern SEARCHBAR = new Pattern(BASE_PATH + "searchbar.png");
     public static final Pattern AGREEMENTS = new Pattern(BASE_PATH + "contactrecording.png");
+    public static final Pattern MENU = new Pattern(BASE_PATH + "Menu.png");
+    public static final Pattern AGREEMENTSMENU = new Pattern(BASE_PATH + "AgreementsMenu.png");    
     public static final Pattern CONTACT_RECORDING = new Pattern(BASE_PATH + "contactrecording.png");
 
     public static final Pattern SURVEY_TYPE = new Pattern(BASE_PATH + "surveytype.png");
@@ -18,6 +20,7 @@ public class SikuliElementsMobile {
     public static final Pattern SUBMIT = new Pattern(BASE_PATH + "submit.png");
 
     public static final Pattern NEW_RECEIPT = new Pattern(BASE_PATH + "newreceiptbutton.png");
+    public static final Pattern AGG_NEW_RECEIPT = new Pattern(BASE_PATH + "AggNewReceipt.png");
     public static final Pattern RECEIPT_TYPE = new Pattern(BASE_PATH + "ReceiptType.png").targetOffset(0, -50);
     public static final Pattern SELECT_OVERDUE = new Pattern(BASE_PATH + "SelectReceiptType.png").targetOffset(-140, -70);
     public static final Pattern CONTINUE = new Pattern(BASE_PATH + "Continue.png");

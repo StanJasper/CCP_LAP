@@ -3,9 +3,13 @@ package CCP_LAP.PlaywrightAutomation;
 import com.microsoft.playwright.*;
 import com.microsoft.playwright.options.Geolocation;
 import framework.SikuliElementsMobile;
+import framework.SikuliHelper;
 import framework.SikuliHelperMobile;
+import framework.ccpLAPBatchChallanMobile;
 import framework.ConfigReader;
 import framework.RandomNumberUtil;
+import framework.SikuliElements;
+
 import org.sikuli.script.Match;
 
 import java.util.Arrays;
@@ -43,7 +47,7 @@ public class ccpLAPODMobile {
 
             page.keyboard().press("Enter");
             Thread.sleep(1000);
-
+/*
             SikuliHelperMobile.click(SikuliElementsMobile.CONTACT_RECORDING);
             SikuliHelperMobile.click(SikuliElementsMobile.SURVEY_TYPE);
             SikuliHelperMobile.pressArrowDown(2);
@@ -55,11 +59,28 @@ public class ccpLAPODMobile {
             SikuliHelperMobile.paste(SikuliElementsMobile.Q3, "Loan Cancelation");
             SikuliHelperMobile.click(SikuliElementsMobile.NEXT);
             SikuliHelperMobile.click(SikuliElementsMobile.SUBMIT);
-
+*/
+         // Start Cash Flow
             fillCashReceiptFlow();
+            Thread.sleep(10000);
+            ccpLAPBatchChallanMobile.runMobileBatchAndChallan(page);
+
+            // Start Cheque Flow
+            reselectAgreement(page);
             fillChequeReceiptFlow(page);
+            Thread.sleep(10000);
+            ccpLAPBatchChallanMobile.runMobileBatchAndChallan(page);
+
+            // Start Draft Flow
+            reselectAgreement(page);
             fillDraftReceiptFlow(page);
+            Thread.sleep(10000);
+            ccpLAPBatchChallanMobile.runMobileBatchAndChallan(page);
+
+            // Start RTGS Flow (no batch and challan)
+            reselectAgreement(page);
             fillRTGSReceiptFlow(page);
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -67,11 +88,11 @@ public class ccpLAPODMobile {
     }
 
     public static void startCommonReceiptFlow(String mode) throws Exception {
-        SikuliHelperMobile.click(SikuliElementsMobile.NEW_RECEIPT);
+        SikuliHelperMobile.click(SikuliElementsMobile.AGG_NEW_RECEIPT);
         Thread.sleep(1000);
         SikuliHelperMobile.click(SikuliElementsMobile.RECEIPT_TYPE);
         SikuliHelperMobile.click(SikuliElementsMobile.SELECT_OVERDUE);
-        Thread.sleep(1000);
+        Thread.sleep(10000);
         SikuliHelperMobile.click(SikuliElementsMobile.CONTINUE);
         Thread.sleep(1000);
         SikuliHelperMobile.click(SikuliElementsMobile.CUSTOMER);
@@ -158,6 +179,17 @@ public class ccpLAPODMobile {
  
 
         finishReceiptFlow();
+    }
+    
+    public static void reselectAgreement(Page page) throws Exception {
+        SikuliHelper.click(SikuliElementsMobile.MENU);
+        Thread.sleep(2000);
+        SikuliHelper.click(SikuliElementsMobile.AGREEMENTSMENU);
+        Thread.sleep(2000);
+        SikuliHelper.paste(SikuliElementsMobile.SEARCHBAR, ConfigReader.get("agreement_no"));
+        page.keyboard().press("Enter");
+        Thread.sleep(1500);
+        SikuliHelper.click(SikuliElementsMobile.AGREEMENT_NO);
     }
 
     public static void uploadAttachment() throws Exception {
