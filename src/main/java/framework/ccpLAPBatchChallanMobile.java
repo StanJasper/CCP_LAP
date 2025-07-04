@@ -52,7 +52,7 @@ public class ccpLAPBatchChallanMobile {
         screen.click(new Pattern(basePath + "\\mobilebatch\\New.png"));
         Thread.sleep(5000);
 
-        screen.click(new Pattern(basePath + "\\mobilechallan\\DepositBank.png"));
+        screen.click(new Pattern(basePath + "\\mobilechallan\\DepositBank.png").targetOffset(100, 85));
         Thread.sleep(1000);
 
         screen.click(new Pattern(basePath + "\\mobilechallan\\ChallanNo.png"));
@@ -61,7 +61,7 @@ public class ccpLAPBatchChallanMobile {
         screen.paste(challanNo);
         System.out.println("Generated Challan No (Mobile): " + challanNo);
 
-        screen.click(new Pattern(basePath + "\\mobilechallan\\BankName.png"));
+        screen.click(new Pattern(basePath + "\\mobilechallan\\Bank.png"));
         page.keyboard().press("Enter");
         Thread.sleep(1000);
 
@@ -74,13 +74,13 @@ public class ccpLAPBatchChallanMobile {
         screen.wheel(Button.WHEEL_DOWN, 5);
         Thread.sleep(1500);
 
-        Pattern denomPattern = new Pattern(basePath + "\\mobilechallan\\ChallanAmount.png").targetOffset(0, 110);
+        Pattern denomPattern = new Pattern(basePath + "\\mobilechallan\\Denomination.png").targetOffset(0, 135);
         if (screen.exists(denomPattern, 3) != null) {
             screen.paste(denomPattern, "1");
             Thread.sleep(1000);
         }
 
-        screen.click(new Pattern(basePath + "\\mobilechallan\\ChallanSubmit.png"));
+        screen.click(new Pattern(basePath + "\\mobilechallan\\SubmitChallan.png").targetOffset(45, 0));
         Thread.sleep(1000);
     }
 }
