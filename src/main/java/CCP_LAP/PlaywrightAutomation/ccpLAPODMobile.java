@@ -184,6 +184,8 @@ public class ccpLAPODMobile {
     public static void reselectAgreement(Page page) throws Exception {
         SikuliHelper.click(SikuliElementsMobile.MENU);
         Thread.sleep(2000);
+        SikuliHelper.click(SikuliElementsMobile.COLLECTION);
+        Thread.sleep(2000);
         SikuliHelper.click(SikuliElementsMobile.AGREEMENTSMENU);
         Thread.sleep(2000);
         SikuliHelper.paste(SikuliElementsMobile.SEARCHBAR, ConfigReader.get("agreement_no"));

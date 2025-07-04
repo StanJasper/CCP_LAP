@@ -9,6 +9,7 @@ public class SikuliElementsMobile {
     public static final Pattern SEARCHBAR = new Pattern(BASE_PATH + "searchbar.png");
     public static final Pattern AGREEMENTS = new Pattern(BASE_PATH + "contactrecording.png");
     public static final Pattern MENU = new Pattern(BASE_PATH + "Menu.png");
+    public static final Pattern COLLECTION = new Pattern(BASE_PATH + "Collection.png");
     public static final Pattern AGREEMENTSMENU = new Pattern(BASE_PATH + "AgreementsMenu.png");    
     public static final Pattern CONTACT_RECORDING = new Pattern(BASE_PATH + "contactrecording.png");
 
