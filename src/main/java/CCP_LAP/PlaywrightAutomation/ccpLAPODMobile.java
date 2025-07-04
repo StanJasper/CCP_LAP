@@ -41,7 +41,7 @@ public class ccpLAPODMobile {
             page.locator("xpath=//input[@name='password']").fill(ConfigReader.get("password"));
             page.click("xpath=(//input[@id='kc-login'])");
 
-            Thread.sleep(5000);
+            Thread.sleep(10000);
 
             SikuliHelperMobile.paste(SikuliElementsMobile.SEARCHBAR, ConfigReader.get("agreement_no"));
 
@@ -162,6 +162,7 @@ public class ccpLAPODMobile {
     public static void fillRTGSReceiptFlow(Page page) throws Exception {
         startCommonReceiptFlow("RTGS");
         SikuliHelperMobile.paste(SikuliElementsMobile.MOBILE_NO, "9566090276");
+        Thread.sleep(1500);
         SikuliHelperMobile.scrollDown(1);
 
         Match match = SikuliHelperMobile.find(SikuliElementsMobile.UTR_NO, 5);
