@@ -10,7 +10,8 @@ public class SikuliElementsMobile {
     public static final Pattern AGREEMENTS = new Pattern(BASE_PATH + "contactrecording.png");
     public static final Pattern MENU = new Pattern(BASE_PATH + "Menu.png");
     public static final Pattern COLLECTION = new Pattern(BASE_PATH + "Collection.png");
-    public static final Pattern AGREEMENTSMENU = new Pattern(BASE_PATH + "AgreementsMenu.png");    
+    public static final Pattern AGREEMENTSMENU = new Pattern(BASE_PATH + "AgreementsMenu.png");  
+    public static final Pattern ALL_AGREEMENTS = new Pattern(BASE_PATH + "AllAgreements.png").targetOffset(0, -40);    
     public static final Pattern CONTACT_RECORDING = new Pattern(BASE_PATH + "contactrecording.png");
 
     public static final Pattern SURVEY_TYPE = new Pattern(BASE_PATH + "surveytype.png");
@@ -44,7 +45,7 @@ public class SikuliElementsMobile {
 
     public static final Pattern PREVIEW = new Pattern(BASE_PATH + "Preview.png");
     public static final Pattern SAVE = new Pattern(BASE_PATH + "Save.png");
-    public static final Pattern RECEIPT = new Pattern(BASE_PATH + "Receipt.png");
+    public static final Pattern RECEIPT = new Pattern(BASE_PATH + "ReceiptPrint.png");
     public static final Pattern RECEIPT_CLOSE = new Pattern(BASE_PATH + "Close.png");
 
     public static final Pattern AGREEMENT_NO = new Pattern(BASE_PATH + "agreementnumber.png"); // Optional

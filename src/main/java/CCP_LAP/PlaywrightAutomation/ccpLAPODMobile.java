@@ -42,6 +42,8 @@ public class ccpLAPODMobile {
             page.click("xpath=(//input[@id='kc-login'])");
 
             Thread.sleep(10000);
+            
+            SikuliHelperMobile.click(SikuliElementsMobile.ALL_AGREEMENTS);
 
             SikuliHelperMobile.paste(SikuliElementsMobile.SEARCHBAR, ConfigReader.get("agreement_no"));
 
@@ -188,6 +190,8 @@ public class ccpLAPODMobile {
         SikuliHelper.click(SikuliElementsMobile.COLLECTION);
         Thread.sleep(2000);
         SikuliHelper.click(SikuliElementsMobile.AGREEMENTSMENU);
+        Thread.sleep(2000);
+        SikuliHelper.click(SikuliElementsMobile.ALL_AGREEMENTS);
         Thread.sleep(2000);
         SikuliHelper.paste(SikuliElementsMobile.SEARCHBAR, ConfigReader.get("agreement_no"));
         page.keyboard().press("Enter");
