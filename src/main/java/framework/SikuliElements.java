@@ -32,7 +32,7 @@ public class SikuliElements {
     public static final Pattern PREVIEW = new Pattern(BASE_PATH + "Preview.png");
     public static final Pattern SAVE = new Pattern(BASE_PATH + "Save.png");
 
-    public static final Pattern RECEIPT = new Pattern(BASE_PATH + "Receipt.png");
+    public static final Pattern RECEIPT = new Pattern(BASE_PATH + "ReceiptPrint.png");
     public static final Pattern RECEIPT_CLOSE = new Pattern(BASE_PATH + "Close.png");
 
 	public static Pattern CONTACT_RECORDING;
