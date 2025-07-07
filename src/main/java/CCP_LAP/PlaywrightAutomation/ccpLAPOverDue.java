@@ -50,19 +50,19 @@ public class ccpLAPOverDue {
 
          // Start Cash Flow
             fillCashReceiptFlow();
-            Thread.sleep(10000);
+            Thread.sleep(3000);
             ccpLAPBatchChallan.runCashBatchAndChallan(page);
 
             // Start Cheque Flow
             reselectAgreement(page);
             fillChequeReceiptFlow(page);
-            Thread.sleep(10000);
+            Thread.sleep(3000);
             ccpLAPBatchChallan.runChequeBatchAndChallan(page);
 
             // Start Draft Flow
             reselectAgreement(page);
             fillDraftReceiptFlow(page);
-            Thread.sleep(10000);
+            Thread.sleep(3000);
             ccpLAPBatchChallan.runDraftBatchAndChallan(page);
 
             // Start RTGS Flow (no batch and challan)
@@ -202,5 +202,6 @@ public class ccpLAPOverDue {
         SikuliHelper.click(SikuliElements.RECEIPT);
         SikuliHelper.scrollDown(10);
         SikuliHelper.click(SikuliElements.RECEIPT_CLOSE);
+        SikuliHelper.click(SikuliElements.TOAST_CLOSE);
     }
 }

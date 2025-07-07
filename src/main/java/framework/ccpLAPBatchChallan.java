@@ -14,7 +14,7 @@ public class ccpLAPBatchChallan {
     public static void runCashBatchAndChallan(Page page) throws Exception {
         runBatch("batch\\batch.png", "batch\\NewBatch.png", "batch\\CashCard.png");
         System.out.println("Waiting before running Cash Challan...");
-        Thread.sleep(12000);
+        Thread.sleep(2000);
         runCashChallan(page);
         Thread.sleep(2000);
     }
@@ -22,17 +22,17 @@ public class ccpLAPBatchChallan {
     public static void runChequeBatchAndChallan(Page page) throws Exception {
         runBatch("batch\\batch.png", "batch\\NewBatch.png", "batch\\CashCard.png");
         System.out.println("Waiting before running Cheque Challan...");
-        Thread.sleep(12000);
+        Thread.sleep(2000);
         runChequeDraftChallan(page);
-        Thread.sleep(12000);
+        Thread.sleep(2000);
     }
 
     public static void runDraftBatchAndChallan(Page page) throws Exception {
         runBatch("batch\\batch.png", "batch\\NewBatch.png", "batch\\CashCard.png");
         System.out.println("Waiting before running Draft Challan...");
-        Thread.sleep(12000);
+        Thread.sleep(2000);
         runChequeDraftChallan(page);
-        Thread.sleep(12000);
+        Thread.sleep(2000);
     }
 
     private static void runBatch(String batchScreen, String newBatchBtn, String submitBtn) throws Exception {
@@ -44,6 +44,12 @@ public class ccpLAPBatchChallan {
 
         screen.click(new Pattern(basePath + "\\" + submitBtn).targetOffset(140, 90));
         Thread.sleep(1000);
+        
+        //screen.click(new Pattern(basePath + "\\batch\\ToastClose.png"));
+        //Thread.sleep(1000);
+        
+        toastclose();
+        
 
     }
 
@@ -87,6 +93,7 @@ public class ccpLAPBatchChallan {
 
         screen.click(new Pattern(basePath + "\\challan\\ChallanSubmit.png"));
         Thread.sleep(1000);
+        toastclose();
     }
 
     private static void runChequeDraftChallan(Page page) throws Exception {
@@ -123,5 +130,11 @@ public class ccpLAPBatchChallan {
 
         screen.click(new Pattern(basePath + "\\challan\\ChallanSubmit.png"));
         Thread.sleep(1000);
+        toastclose();
     }
+
+public static void toastclose() throws Exception {
+    SikuliHelper.click(SikuliElements.TOAST_CLOSE);
 }
+}
+

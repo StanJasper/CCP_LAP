@@ -47,6 +47,8 @@ public class SikuliElementsMobile {
     public static final Pattern SAVE = new Pattern(BASE_PATH + "Save.png");
     public static final Pattern RECEIPT = new Pattern(BASE_PATH + "ReceiptPrint.png");
     public static final Pattern RECEIPT_CLOSE = new Pattern(BASE_PATH + "Close.png");
+    public static final Pattern TOAST_CLOSE = new Pattern(BASE_PATH + "ToastClose.png");
+
 
     public static final Pattern AGREEMENT_NO = new Pattern(BASE_PATH + "agreementnumber.png"); // Optional
 }

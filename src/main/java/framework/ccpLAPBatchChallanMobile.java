@@ -34,6 +34,8 @@ public class ccpLAPBatchChallanMobile {
 
         screen.click(new Pattern(basePath + "\\mobilebatch\\BatchSubmit.png").targetOffset(140, 90));
         Thread.sleep(1000);
+        toastclose();
+
     }
 
     private static void runMobileChallan(Page page) throws Exception {
@@ -82,5 +84,10 @@ public class ccpLAPBatchChallanMobile {
 
         screen.click(new Pattern(basePath + "\\mobilechallan\\SubmitChallan.png").targetOffset(45, 0));
         Thread.sleep(1000);
+        toastclose();
+    }
+    
+    public static void toastclose() throws Exception {
+        SikuliHelper.click(SikuliElementsMobile.TOAST_CLOSE);
     }
 }

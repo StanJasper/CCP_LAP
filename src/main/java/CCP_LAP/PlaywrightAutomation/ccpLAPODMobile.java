@@ -64,19 +64,19 @@ public class ccpLAPODMobile {
 */
          // Start Cash Flow
             fillCashReceiptFlow();
-            Thread.sleep(10000);
+            Thread.sleep(5000);
             ccpLAPBatchChallanMobile.runMobileBatchAndChallan(page);
 
             // Start Cheque Flow
             reselectAgreement(page);
             fillChequeReceiptFlow(page);
-            Thread.sleep(10000);
+            Thread.sleep(5000);
             ccpLAPBatchChallanMobile.runMobileBatchAndChallan(page);
 
             // Start Draft Flow
             reselectAgreement(page);
             fillDraftReceiptFlow(page);
-            Thread.sleep(10000);
+            Thread.sleep(5000);
             ccpLAPBatchChallanMobile.runMobileBatchAndChallan(page);
 
             // Start RTGS Flow (no batch and challan)
@@ -94,7 +94,7 @@ public class ccpLAPODMobile {
         Thread.sleep(1000);
         SikuliHelperMobile.click(SikuliElementsMobile.RECEIPT_TYPE);
         SikuliHelperMobile.click(SikuliElementsMobile.SELECT_OVERDUE);
-        Thread.sleep(10000);
+        Thread.sleep(3000);
         SikuliHelperMobile.click(SikuliElementsMobile.CONTINUE);
         Thread.sleep(1000);
         SikuliHelperMobile.click(SikuliElementsMobile.CUSTOMER);
@@ -218,5 +218,6 @@ public class ccpLAPODMobile {
         SikuliHelperMobile.click(SikuliElementsMobile.RECEIPT);
         SikuliHelperMobile.scrollDown(10);
         SikuliHelperMobile.click(SikuliElementsMobile.RECEIPT_CLOSE);
+        SikuliHelper.click(SikuliElements.TOAST_CLOSE);
     }
 }
