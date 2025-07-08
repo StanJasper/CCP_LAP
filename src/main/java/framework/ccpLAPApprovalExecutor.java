@@ -32,6 +32,7 @@ public class ccpLAPApprovalExecutor {
             page.navigate("https://ccppreprod02.chola.murugappa.com");
 
             // Login
+            page.locator("xpath = //h3[contains(text(),'Loan Against Property')]").click();
             page.locator("xpath=//input[@name='username']").fill(username);
             page.locator("xpath=//input[@name='password']").fill(password);
             page.click("xpath=(//input[@id='kc-login'])");
@@ -48,12 +49,16 @@ public class ccpLAPApprovalExecutor {
             Pattern AssignedTo = new Pattern(basePath + "\\ppapproval\\AssignedTo.png");
             screen.click(AssignedTo);
 
-            Pattern ApprovalName = new Pattern(basePath + "\\ppapproval\\ApprovalName.png");
+            Pattern ApprovalName = new Pattern(basePath + "\\ppapproval\\ApprovalName.png").targetOffset(0, 23);
             screen.click(ApprovalName);
             Thread.sleep(1000);
 
             Pattern ApproveButton = new Pattern(basePath + "\\ppapproval\\ApproveButton.png");
             screen.click(ApproveButton);
+            Thread.sleep(2000);
+
+            Pattern ApprovePP = new Pattern(basePath + "\\ppapproval\\ApprovePP.png");
+            screen.click(ApprovePP);
             Thread.sleep(2000);
 
         } catch (Exception e) {

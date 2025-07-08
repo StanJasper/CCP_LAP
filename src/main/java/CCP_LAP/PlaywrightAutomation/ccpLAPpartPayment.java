@@ -53,7 +53,7 @@ public class ccpLAPpartPayment {
             ccpLAPpartPaymentApproval.raiseApproval(approvalType);
             Thread.sleep(3000); // 
             
-/*         // Approve as first approver
+         // Approve as first approver
             ccpLAPApprovalExecutor.approveAs(
                 ConfigReader.get("approver1_username"),
                 ConfigReader.get("approver1_password")
@@ -64,7 +64,7 @@ public class ccpLAPpartPayment {
                 ConfigReader.get("approver2_username"),
                 ConfigReader.get("approver2_password")
             );
-*/
+
             // Continue with receipting...
 
             // Get mode and approval type from config
