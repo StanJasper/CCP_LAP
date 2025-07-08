@@ -35,6 +35,14 @@ public class SikuliElements {
     public static final Pattern RECEIPT = new Pattern(BASE_PATH + "ReceiptPrint.png");
     public static final Pattern RECEIPT_CLOSE = new Pattern(BASE_PATH + "Close.png");
     public static final Pattern TOAST_CLOSE = new Pattern(BASE_PATH + "ToastClose.png");
+    
+    public static final Pattern CONSENT_UPLOAD = new Pattern(BASE_PATH + "ConsentUpload.png");
+    public static final Pattern GENERATE_PP = new Pattern(BASE_PATH + "GeneratePP.png");
+    public static final Pattern PP_AMOUNT = new Pattern(BASE_PATH + "PPAmount.png");
+    public static final Pattern CALCULATE_PP = new Pattern(BASE_PATH + "PPCalculate.png");
+    public static final Pattern PROCEED = new Pattern(BASE_PATH + "Proceed.png");
+    
+    public static final Pattern SELECT_PP = new Pattern(BASE_PATH + "PPTenureSelection.png");
 
 	public static Pattern CONTACT_RECORDING;
 
