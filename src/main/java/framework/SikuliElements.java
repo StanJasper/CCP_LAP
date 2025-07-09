@@ -38,11 +38,13 @@ public class SikuliElements {
     
     public static final Pattern CONSENT_UPLOAD = new Pattern(BASE_PATH + "ConsentUpload.png");
     public static final Pattern GENERATE_PP = new Pattern(BASE_PATH + "GeneratePP.png");
-    public static final Pattern PP_AMOUNT = new Pattern(BASE_PATH + "PPAmount.png");
-    public static final Pattern CALCULATE_PP = new Pattern(BASE_PATH + "PPCalculate.png");
-    public static final Pattern PROCEED = new Pattern(BASE_PATH + "Proceed.png");
+    public static final Pattern PP_ALLOCATION = new Pattern(BASE_PATH + "PPAllocation.png").targetOffset(-140, 50);
+    public static final Pattern CALCULATE_PP = new Pattern(BASE_PATH + "PPCalculate.png").targetOffset(0, 45);
+    public static final Pattern PROCEED = new Pattern(BASE_PATH + "Proceed.png").targetOffset(-35, 50);
     
-    public static final Pattern SELECT_PP = new Pattern(BASE_PATH + "PPTenureSelection.png");
+    public static final Pattern SELECT_PP_TENURE = new Pattern(BASE_PATH + "PPTenureSelection.png").targetOffset(-80, 75);
+    public static final Pattern SELECT_PP_EMI = new Pattern(BASE_PATH + "PPTenureSelection.png").targetOffset(-80, 122);
+    
 
 	public static Pattern CONTACT_RECORDING;
 

@@ -42,13 +42,13 @@ public class ccpLAPpartPayment {
             Thread.sleep(5000);
 
             SikuliHelper.click(SikuliElements.AGREEMENTS);
-            Thread.sleep(2000);
+            Thread.sleep(3000);
             SikuliHelper.paste(SikuliElements.SEARCHBAR, ConfigReader.get("agreement_no"));
             page.keyboard().press("Enter");
             Thread.sleep(1000);
             SikuliHelper.click(SikuliElements.AGREEMENT_NO);
-            
-         // Raise Approval before proceeding to receipting
+          
+         // Raise Approval
             String approvalType = ConfigReader.get("approval_type"); // Should be either "tenure" or "emi"
             ccpLAPpartPaymentApproval.raiseApproval(approvalType);
             Thread.sleep(3000); // 
@@ -65,7 +65,7 @@ public class ccpLAPpartPayment {
                 ConfigReader.get("approver2_password")
             );
 
-            // Continue with receipting...
+            // Continue with receipting
 
             // Get mode and approval type from config
             String ppMode = ConfigReader.get("pp_mode").toLowerCase(); // cheque/draft/rtgs
@@ -95,19 +95,30 @@ public class ccpLAPpartPayment {
 
     public static void startCommonReceiptFlow(String mode) throws Exception {
         SikuliHelper.click(SikuliElements.NEW_RECEIPT);
-        Thread.sleep(1000);
+        SikuliHelper.click(SikuliElements.NEW_RECEIPT);
+        Thread.sleep(2000);
         SikuliHelper.click(SikuliElements.RECEIPT_TYPE);
-        SikuliHelper.click(SikuliElements.SELECT_PP);
+        
+        // Read approvalType from config and select accordingly
+        String approvalType = ConfigReader.get("approval_type");  // should be 'tenure' or 'emi'
+        if (approvalType != null && approvalType.equalsIgnoreCase("tenure")) {
+            SikuliHelper.click(SikuliElements.SELECT_PP_TENURE);
+        } else if (approvalType != null && approvalType.equalsIgnoreCase("emi")) {
+            SikuliHelper.click(SikuliElements.SELECT_PP_EMI);
+        } else {
+            throw new RuntimeException("Invalid or missing 'approval_type' in config. Must be 'tenure' or 'emi'.");
+        }
+
         Thread.sleep(1000);
         SikuliHelper.click(SikuliElements.CONTINUE);
         SikuliHelper.click(SikuliElements.CONSENT_UPLOAD);
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         SikuliHelper.pasteWithoutTarget("D:\\1_Jasper\\Automation\\workspace\\PlaywrightAutomation\\src\\main\\java\\resources\\images\\email-example.jpg");
         Thread.sleep(1500);
+        SikuliHelper.pressEnter();
+        Thread.sleep(1500);
 
-        if (mode.equals("Cheque")) {
-            SikuliHelper.click(SikuliElements.CHEQUE_MODE);
-        } else if (mode.equals("Draft")) {
+        if (mode.equals("Draft")) {
             SikuliHelper.click(SikuliElements.DRAFT_MODE);
         } else if (mode.equals("RTGS")) {
             SikuliHelper.click(SikuliElements.RTGS_MODE);
@@ -118,7 +129,7 @@ public class ccpLAPpartPayment {
         startCommonReceiptFlow("Cheque");
         SikuliHelper.paste(SikuliElements.MOBILE_NO, ConfigReader.get("mobile_no"));
         Thread.sleep(1000);
-        SikuliHelper.paste(SikuliElements.AMOUNT, "1");
+        SikuliHelper.paste(SikuliElements.AMOUNT, ConfigReader.get("ppamount"));
         generatepartpayment();
         SikuliHelper.scrollDown(1);
         Thread.sleep(1000);
@@ -142,7 +153,7 @@ public class ccpLAPpartPayment {
         startCommonReceiptFlow("Draft");
         SikuliHelper.paste(SikuliElements.MOBILE_NO, ConfigReader.get("mobile_no"));
         Thread.sleep(1000);
-        SikuliHelper.paste(SikuliElements.AMOUNT, "1");
+        SikuliHelper.paste(SikuliElements.AMOUNT, ConfigReader.get("ppamount"));
         generatepartpayment();
         SikuliHelper.scrollDown(1);
         Thread.sleep(1000);
@@ -188,7 +199,7 @@ public class ccpLAPpartPayment {
     public static void generatepartpayment() throws Exception {
         SikuliHelper.click(SikuliElements.GENERATE_PP);
         Thread.sleep(1500);
-        SikuliHelper.paste(SikuliElements.PP_AMOUNT, ConfigReader.get("agreement_no"));
+        SikuliHelper.paste(SikuliElements.PP_ALLOCATION, ConfigReader.get("ppamount"));
         SikuliHelper.click(SikuliElements.CALCULATE_PP);
         SikuliHelper.click(SikuliElements.PROCEED);
     }
