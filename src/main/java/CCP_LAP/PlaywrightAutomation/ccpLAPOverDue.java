@@ -5,6 +5,7 @@ import com.microsoft.playwright.options.Geolocation;
 import framework.SikuliElements;
 import framework.SikuliHelper;
 import framework.ccpLAPBatchChallan;
+import framework.screenshotUtil;
 import framework.ConfigReader;
 import framework.RandomNumberUtil;
 import org.sikuli.script.*;
@@ -49,7 +50,7 @@ public class ccpLAPOverDue {
             SikuliHelper.click(SikuliElements.AGREEMENT_NO);
 
          // Start Cash Flow
-            fillCashReceiptFlow();
+            fillCashReceiptFlow(page);
             Thread.sleep(3000);
             ccpLAPBatchChallan.runCashBatchAndChallan(page);
 
@@ -91,7 +92,7 @@ public class ccpLAPOverDue {
         }
     }
 
-    public static void fillCashReceiptFlow() throws Exception {
+    public static void fillCashReceiptFlow(Page page) throws Exception {
         startCommonReceiptFlow("Cash");
         SikuliHelper.paste(SikuliElements.MOBILE_NO, ConfigReader.get("mobile_no"));
         Thread.sleep(1000);
@@ -101,7 +102,7 @@ public class ccpLAPOverDue {
         SikuliHelper.paste(SikuliElements.ADVANCE_EMI, "1");
         SikuliHelper.scrollDown(4);
         Thread.sleep(1000);
-        finishReceiptFlow();
+        finishReceiptFlow(page);
     }
 
     public static void fillChequeReceiptFlow(Page page) throws Exception {
@@ -124,7 +125,7 @@ public class ccpLAPOverDue {
         SikuliHelper.paste(SikuliElements.INSTRUMENT_NO, instNo);
 
         uploadAttachment(); Thread.sleep(2000);
-        finishReceiptFlow();
+        finishReceiptFlow(page);
     }
 
     public static void fillDraftReceiptFlow(Page page) throws Exception {
@@ -147,7 +148,7 @@ public class ccpLAPOverDue {
         SikuliHelper.paste(SikuliElements.INSTRUMENT_NO, instNo);
 
         uploadAttachment(); Thread.sleep(2000);
-        finishReceiptFlow();
+        finishReceiptFlow(page);
     }
 
     public static void fillRTGSReceiptFlow(Page page) throws Exception {
@@ -171,7 +172,7 @@ public class ccpLAPOverDue {
         SikuliHelper.scrollDown(3);
 
         uploadAttachment(); Thread.sleep(2000);
-        finishReceiptFlow();
+        finishReceiptFlow(page);
     }
     
     public static void reselectAgreement(Page page) throws Exception {
@@ -194,12 +195,13 @@ public class ccpLAPOverDue {
         SikuliHelper.scrollDown(1);
     }
 
-    public static void finishReceiptFlow() throws Exception {
+    public static void finishReceiptFlow(Page page) throws Exception {
         SikuliHelper.click(SikuliElements.PREVIEW);
         Thread.sleep(1500);
         SikuliHelper.click(SikuliElements.SAVE);
         SikuliHelper.scrollDown(3);
         SikuliHelper.click(SikuliElements.RECEIPT);
+        screenshotUtil.capture(page);
         SikuliHelper.scrollDown(10);
         SikuliHelper.click(SikuliElements.RECEIPT_CLOSE);
         SikuliHelper.click(SikuliElements.TOAST_CLOSE);

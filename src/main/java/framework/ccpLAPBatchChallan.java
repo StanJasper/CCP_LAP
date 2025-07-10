@@ -12,7 +12,7 @@ public class ccpLAPBatchChallan {
     static String basePath = "D:\\1_Jasper\\Automation\\workspace\\PlaywrightAutomation\\src\\main\\java\\resources";
 
     public static void runCashBatchAndChallan(Page page) throws Exception {
-        runBatch("batch\\batch.png", "batch\\NewBatch.png", "batch\\CashCard.png");
+        runBatch("batch\\batch.png", "batch\\NewBatch.png", "batch\\CashCard.png", page);
         System.out.println("Waiting before running Cash Challan...");
         Thread.sleep(2000);
         runCashChallan(page);
@@ -20,7 +20,7 @@ public class ccpLAPBatchChallan {
     }
 
     public static void runChequeBatchAndChallan(Page page) throws Exception {
-        runBatch("batch\\batch.png", "batch\\NewBatch.png", "batch\\CashCard.png");
+        runBatch("batch\\batch.png", "batch\\NewBatch.png", "batch\\CashCard.png", page);
         System.out.println("Waiting before running Cheque Challan...");
         Thread.sleep(2000);
         runChequeDraftChallan(page);
@@ -28,19 +28,21 @@ public class ccpLAPBatchChallan {
     }
 
     public static void runDraftBatchAndChallan(Page page) throws Exception {
-        runBatch("batch\\batch.png", "batch\\NewBatch.png", "batch\\CashCard.png");
+        runBatch("batch\\batch.png", "batch\\NewBatch.png", "batch\\CashCard.png", page);
         System.out.println("Waiting before running Draft Challan...");
         Thread.sleep(2000);
         runChequeDraftChallan(page);
         Thread.sleep(2000);
     }
 
-    private static void runBatch(String batchScreen, String newBatchBtn, String submitBtn) throws Exception {
+    private static void runBatch(String batchScreen, String newBatchBtn, String submitBtn, Page page) throws Exception {
         screen.click(new Pattern(basePath + "\\" + batchScreen));
         Thread.sleep(1000);
 
         screen.click(new Pattern(basePath + "\\" + newBatchBtn));
         Thread.sleep(1000);
+        
+        screenshotUtil.capture(page);
 
         screen.click(new Pattern(basePath + "\\" + submitBtn).targetOffset(140, 90));
         Thread.sleep(1000);
@@ -91,6 +93,8 @@ public class ccpLAPBatchChallan {
             Thread.sleep(1000);
         }
 
+        screenshotUtil.capture(page);
+        
         screen.click(new Pattern(basePath + "\\challan\\ChallanSubmit.png"));
         Thread.sleep(1000);
         toastclose();
@@ -127,6 +131,8 @@ public class ccpLAPBatchChallan {
 
         screen.wheel(Button.WHEEL_DOWN, 5);
         Thread.sleep(1500);
+        
+        screenshotUtil.capture(page);
 
         screen.click(new Pattern(basePath + "\\challan\\ChallanSubmit.png"));
         Thread.sleep(1000);
