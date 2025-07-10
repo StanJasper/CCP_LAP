@@ -201,8 +201,8 @@ public class ccpLAPOverDue {
         SikuliHelper.click(SikuliElements.SAVE);
         SikuliHelper.scrollDown(3);
         SikuliHelper.click(SikuliElements.RECEIPT);
-        screenshotUtil.capture(page);
         SikuliHelper.scrollDown(10);
+        screenshotUtil.capture(page);
         SikuliHelper.click(SikuliElements.RECEIPT_CLOSE);
         SikuliHelper.click(SikuliElements.TOAST_CLOSE);
     }

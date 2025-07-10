@@ -40,7 +40,7 @@ public class ccpLAPBatchChallan {
         Thread.sleep(1000);
 
         screen.click(new Pattern(basePath + "\\" + newBatchBtn));
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         
         screenshotUtil.capture(page);
 
