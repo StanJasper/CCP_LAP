@@ -11,7 +11,7 @@ public class screenshotUtil {
     public static void capture(Page page) {
         try {
             String baseFolder = ConfigReader.get("screenshot_path"); // e.g., D:\\Screenshots
-            String runFolder = "Run_" + runContext.runTimestamp;
+            String runFolder = "CCP_LAP_" + runContext.runTimestamp;
             String fullFolderPath = Paths.get(baseFolder, runFolder).toString();
 
             File folder = new File(fullFolderPath);
