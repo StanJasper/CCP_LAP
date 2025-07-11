@@ -74,6 +74,8 @@ public class ccpLAPBatchChallanMobile {
         screen.paste(basePath + "\\images\\email-example.jpg");
         screen.type(Key.ENTER);
         Thread.sleep(1500);
+        
+        screenshotUtil.capture(page);
 
         screen.wheel(Button.WHEEL_DOWN, 5);
         Thread.sleep(1500);
@@ -84,8 +86,6 @@ public class ccpLAPBatchChallanMobile {
             Thread.sleep(1000);
         }
         
-        screenshotUtil.capture(page);
-
         screen.click(new Pattern(basePath + "\\mobilechallan\\SubmitChallan.png").targetOffset(45, 0));
         Thread.sleep(1000);
         toastclose();
