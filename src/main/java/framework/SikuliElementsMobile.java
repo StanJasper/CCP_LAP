@@ -25,6 +25,7 @@ public class SikuliElementsMobile {
     public static final Pattern AGG_NEW_RECEIPT = new Pattern(BASE_PATH + "AggNewReceipt.png");
     public static final Pattern RECEIPT_TYPE = new Pattern(BASE_PATH + "ReceiptType.png").targetOffset(0, -50);
     public static final Pattern SELECT_OVERDUE = new Pattern(BASE_PATH + "SelectReceiptType.png").targetOffset(-140, -70);
+   // public static final Pattern SELECT_OVERDUE = new Pattern(BASE_PATH + "OverDueSelect.png").targetOffset(-10, 25);
     public static final Pattern CONTINUE = new Pattern(BASE_PATH + "Continue.png");
 
     public static final Pattern CHEQUE_MODE = new Pattern(BASE_PATH + "ChequeMode.png");
@@ -44,9 +45,9 @@ public class SikuliElementsMobile {
     public static final Pattern UPLOAD = new Pattern(BASE_PATH + "Upload.png").targetOffset(-52, 12);
 
     public static final Pattern PREVIEW = new Pattern(BASE_PATH + "Preview.png");
-    public static final Pattern SAVE = new Pattern(BASE_PATH + "Save.png");
+    public static final Pattern SAVE = new Pattern(BASE_PATH + "ReceiptSaveButton.png").targetOffset(30, 0);
     public static final Pattern RECEIPT = new Pattern(BASE_PATH + "ReceiptPrint.png");
-    public static final Pattern RECEIPT_CLOSE = new Pattern(BASE_PATH + "Close.png");
+    public static final Pattern RECEIPT_CLOSE = new Pattern(BASE_PATH + "CloseReceipt.png").targetOffset(-95, 0);
     public static final Pattern TOAST_CLOSE = new Pattern(BASE_PATH + "ToastClose.png");
 
 

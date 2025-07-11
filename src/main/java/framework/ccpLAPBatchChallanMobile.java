@@ -58,6 +58,9 @@ public class ccpLAPBatchChallanMobile {
 
         screen.click(new Pattern(basePath + "\\mobilechallan\\DepositBank.png").targetOffset(100, 85));
         Thread.sleep(1000);
+        
+    //    screen.click(new Pattern(basePath + "\\mobilechallan\\CFEBankDeposit.png").targetOffset(15, 90));
+    //    Thread.sleep(1000);
 
         screen.click(new Pattern(basePath + "\\mobilechallan\\ChallanNo.png"));
         Thread.sleep(1000);

@@ -50,19 +50,11 @@ public class ccpLAPODMobile {
 
             page.keyboard().press("Enter");
             Thread.sleep(1000);
-/*
-            SikuliHelperMobile.click(SikuliElementsMobile.CONTACT_RECORDING);
-            SikuliHelperMobile.click(SikuliElementsMobile.SURVEY_TYPE);
-            SikuliHelperMobile.pressArrowDown(2);
-            SikuliHelperMobile.pressEnter();
-            SikuliHelperMobile.click(SikuliElementsMobile.Q1);
-            SikuliHelperMobile.pressEnter();
-            SikuliHelperMobile.click(SikuliElementsMobile.Q2);
-            SikuliHelperMobile.pressEnter();
-            SikuliHelperMobile.paste(SikuliElementsMobile.Q3, "Loan Cancelation");
-            SikuliHelperMobile.click(SikuliElementsMobile.NEXT);
-            SikuliHelperMobile.click(SikuliElementsMobile.SUBMIT);
-*/
+
+            contactrecording(page);
+            
+            reselectAgreement(page);
+            
          // Start Cash Flow
             fillCashReceiptFlow(page);
             Thread.sleep(5000);
@@ -123,7 +115,7 @@ public class ccpLAPODMobile {
 
     public static void fillChequeReceiptFlow(Page page) throws Exception {
         startCommonReceiptFlow("Cheque");
-        SikuliHelperMobile.paste(SikuliElementsMobile.MOBILE_NO, "9566090276");
+        SikuliHelperMobile.paste(SikuliElementsMobile.MOBILE_NO, ConfigReader.get("mobile_no"));
         SikuliHelperMobile.paste(SikuliElementsMobile.AMOUNT, "1");
         SikuliHelperMobile.scrollDown(1);
         SikuliHelperMobile.paste(SikuliElementsMobile.ACC_NO, "12345678901");
@@ -145,7 +137,7 @@ public class ccpLAPODMobile {
 
     public static void fillDraftReceiptFlow(Page page) throws Exception {
         startCommonReceiptFlow("Draft");
-        SikuliHelperMobile.paste(SikuliElementsMobile.MOBILE_NO, "9566090276");
+        SikuliHelperMobile.paste(SikuliElementsMobile.MOBILE_NO, ConfigReader.get("mobile_no"));
         SikuliHelperMobile.paste(SikuliElementsMobile.AMOUNT, "1");
         SikuliHelperMobile.scrollDown(1);
         SikuliHelperMobile.paste(SikuliElementsMobile.MICR, "520002008");
@@ -164,7 +156,7 @@ public class ccpLAPODMobile {
 
     public static void fillRTGSReceiptFlow(Page page) throws Exception {
         startCommonReceiptFlow("RTGS");
-        SikuliHelperMobile.paste(SikuliElementsMobile.MOBILE_NO, "9566090276");
+        SikuliHelperMobile.paste(SikuliElementsMobile.MOBILE_NO, ConfigReader.get("mobile_no"));
         Thread.sleep(1500);
         SikuliHelperMobile.scrollDown(1);
 
@@ -217,10 +209,25 @@ public class ccpLAPODMobile {
         SikuliHelperMobile.scrollDown(3);
         Thread.sleep(5000);
         SikuliHelperMobile.click(SikuliElementsMobile.RECEIPT);
+        Thread.sleep(1500);
+        //SikuliHelper.click(SikuliElements.TOAST_CLOSE);
         SikuliHelperMobile.scrollDown(10);
-        SikuliHelper.click(SikuliElements.TOAST_CLOSE);
         Thread.sleep(1500);
         screenshotUtil.capture(page);
         SikuliHelperMobile.click(SikuliElementsMobile.RECEIPT_CLOSE);
+    }
+    
+    public static void contactrecording(Page page) throws Exception {
+    	SikuliHelperMobile.click(SikuliElementsMobile.CONTACT_RECORDING);
+        SikuliHelperMobile.click(SikuliElementsMobile.SURVEY_TYPE);
+        SikuliHelperMobile.pressArrowDown(2);
+        SikuliHelperMobile.pressEnter();
+        SikuliHelperMobile.click(SikuliElementsMobile.Q1);
+        SikuliHelperMobile.pressEnter();
+        SikuliHelperMobile.click(SikuliElementsMobile.Q2);
+        SikuliHelperMobile.pressEnter();
+        SikuliHelperMobile.paste(SikuliElementsMobile.Q3, "Loan Cancelation");
+        SikuliHelperMobile.click(SikuliElementsMobile.NEXT);
+        SikuliHelperMobile.click(SikuliElementsMobile.SUBMIT);
     }
 }
