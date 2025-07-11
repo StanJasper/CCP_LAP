@@ -9,14 +9,14 @@ public class ccpLAPBatchChallanMobile {
     static String basePath = "D:\\1_Jasper\\Automation\\workspace\\PlaywrightAutomation\\src\\main\\java\\resources";
 
     public static void runMobileBatchAndChallan(Page page) throws Exception {
-        runMobileBatch();
+        runMobileBatch(page);
         System.out.println("Waiting before running mobile challan...");
         Thread.sleep(2000);
         runMobileChallan(page);
         Thread.sleep(2000);
     }
 
-    private static void runMobileBatch() throws Exception {
+    private static void runMobileBatch(Page page) throws Exception {
         screen.click(new Pattern(basePath + "\\mobilebatch\\Menu.png"));
         Thread.sleep(1000);
         
@@ -30,7 +30,9 @@ public class ccpLAPBatchChallanMobile {
         Thread.sleep(1000);
 
         screen.click(new Pattern(basePath + "\\mobilebatch\\New.png"));
-        Thread.sleep(1000);
+        Thread.sleep(3000);
+        
+        screenshotUtil.capture(page);
 
         screen.click(new Pattern(basePath + "\\mobilebatch\\BatchSubmit.png").targetOffset(140, 90));
         Thread.sleep(1000);
@@ -81,6 +83,8 @@ public class ccpLAPBatchChallanMobile {
             screen.paste(denomPattern, "1");
             Thread.sleep(1000);
         }
+        
+        screenshotUtil.capture(page);
 
         screen.click(new Pattern(basePath + "\\mobilechallan\\SubmitChallan.png").targetOffset(45, 0));
         Thread.sleep(1000);

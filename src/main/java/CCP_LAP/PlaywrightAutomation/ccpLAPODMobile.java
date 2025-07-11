@@ -6,6 +6,7 @@ import framework.SikuliElementsMobile;
 import framework.SikuliHelper;
 import framework.SikuliHelperMobile;
 import framework.ccpLAPBatchChallanMobile;
+import framework.screenshotUtil;
 import framework.ConfigReader;
 import framework.RandomNumberUtil;
 import framework.SikuliElements;
@@ -41,7 +42,7 @@ public class ccpLAPODMobile {
             page.locator("xpath=//input[@name='password']").fill(ConfigReader.get("password"));
             page.click("xpath=(//input[@id='kc-login'])");
 
-            Thread.sleep(10000);
+            Thread.sleep(5000);
             
             SikuliHelperMobile.click(SikuliElementsMobile.ALL_AGREEMENTS);
 
@@ -63,7 +64,7 @@ public class ccpLAPODMobile {
             SikuliHelperMobile.click(SikuliElementsMobile.SUBMIT);
 */
          // Start Cash Flow
-            fillCashReceiptFlow();
+            fillCashReceiptFlow(page);
             Thread.sleep(5000);
             ccpLAPBatchChallanMobile.runMobileBatchAndChallan(page);
 
@@ -109,7 +110,7 @@ public class ccpLAPODMobile {
         }
     }
 
-    public static void fillCashReceiptFlow() throws Exception {
+    public static void fillCashReceiptFlow(Page page) throws Exception {
         startCommonReceiptFlow("Cash");
         SikuliHelperMobile.paste(SikuliElementsMobile.MOBILE_NO, ConfigReader.get("mobile_no"));
         Thread.sleep(1000);
@@ -117,7 +118,7 @@ public class ccpLAPODMobile {
         SikuliHelperMobile.scrollDown(5);
         SikuliHelperMobile.paste(SikuliElementsMobile.ADVANCE_EMI, "1");
         SikuliHelperMobile.scrollDown(4);
-        finishReceiptFlow();
+        finishReceiptFlow(page);
     }
 
     public static void fillChequeReceiptFlow(Page page) throws Exception {
@@ -139,7 +140,7 @@ public class ccpLAPODMobile {
 
         
 
-        finishReceiptFlow();
+        finishReceiptFlow(page);
     }
 
     public static void fillDraftReceiptFlow(Page page) throws Exception {
@@ -158,7 +159,7 @@ public class ccpLAPODMobile {
         SikuliHelperMobile.paste(SikuliElementsMobile.ADVANCE_EMI, "1");
 
 
-        finishReceiptFlow();
+        finishReceiptFlow(page);
     }
 
     public static void fillRTGSReceiptFlow(Page page) throws Exception {
@@ -181,7 +182,7 @@ public class ccpLAPODMobile {
         SikuliHelperMobile.scrollDown(3);
  
 
-        finishReceiptFlow();
+        finishReceiptFlow(page);
     }
     
     public static void reselectAgreement(Page page) throws Exception {
@@ -209,7 +210,7 @@ public class ccpLAPODMobile {
         SikuliHelperMobile.scrollDown(1);
     }
 
-    public static void finishReceiptFlow() throws Exception {
+    public static void finishReceiptFlow(Page page) throws Exception {
         SikuliHelperMobile.click(SikuliElementsMobile.PREVIEW);
         Thread.sleep(3000);
         SikuliHelperMobile.click(SikuliElementsMobile.SAVE);
@@ -217,7 +218,9 @@ public class ccpLAPODMobile {
         Thread.sleep(5000);
         SikuliHelperMobile.click(SikuliElementsMobile.RECEIPT);
         SikuliHelperMobile.scrollDown(10);
-        SikuliHelperMobile.click(SikuliElementsMobile.RECEIPT_CLOSE);
         SikuliHelper.click(SikuliElements.TOAST_CLOSE);
+        Thread.sleep(1500);
+        screenshotUtil.capture(page);
+        SikuliHelperMobile.click(SikuliElementsMobile.RECEIPT_CLOSE);
     }
 }
